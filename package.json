@@ -1,27 +1,33 @@
 {
   "name": "gpu-monitor",
   "displayName": "GPU Monitor",
-  "description": "Monitor your GPUs Usage",
-  "version": "0.0.1",
+  "icon": "images/icon.png",
+  "description": "Monitor your NVIDIA GPUs usage in status bar",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.77.0"
   },
   "categories": [
+    "Machine Learning",
+    "Visualization",
     "Other"
   ],
+  "repository": {
+    "url": "https://github.com/Maimonator/vscode-gpu-monitor"
+  },
+  "publisher": "Maimonator",
   "activationEvents": ["onStartupFinished"],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "gpu-monitor.selectGpu",
-        "title": "Select GPU"
+        "title": "GPU Monitor: Select GPU"
       },
       {
         "command": "gpu-monitor.setUpdateInterval",
-        "title": "Update GPU Monitor interval"
+        "title": "GPU Monitor: Update GPU Monitor interval"
       }
-
     ],
     "configuration": {
       "title": "GPU Monitor",
@@ -30,6 +36,16 @@
               "type": "number",
               "default": 1000,
               "description": "The update interval in milliseconds."
+          },
+          "gpu-monitor.selectedGpuIndex": {
+              "type" : "number",
+              "default": 0,
+              "description": "The GPU index to monitor"
+          },
+          "gpu-monitor.binaryPath": {
+              "type" : "string",
+              "default": "nvidia-smi",
+              "description": "Binary path to nvidia-smi, use absolute path if nvidia-smi is not in path"
           }
       }
 
